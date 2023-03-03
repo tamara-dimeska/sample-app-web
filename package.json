@@ -33,13 +33,20 @@
     "@storybook/node-logger": "^7.6.11",
     "@storybook/preset-create-react-app": "^7.6.11",
     "@storybook/react": "^7.6.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "chromedriver": "^121.0.0",
+    "cypress": "^12.9.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.7",
     "enzyme-to-json": "^3.6.2",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "prop-types": "^15.8.1",
     "screener-storybook": "^1.0.0",
     "storybook-react-router": "^1.0.8",
+    "typescript": "^4.9.5",
     "wait-on": "^7.2.0"
   },
   "scripts": {
@@ -55,7 +62,11 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build.storybook": "build-storybook -s public",
     "postbuild.storybook": "cd scripts && ./postbuild.sh",
-    "backtrace.sourcemaps": "backtrace-js run"
+    "backtrace.sourcemaps": "backtrace-js run",
+    "cy:open": "cypress open",
+    "cy:test": "cypress run",
+    "lint.e2e.tests": "npx prettier --write ./cypress && npx eslint ./cypress",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
