@@ -27,3 +27,6 @@ screenshots
 storybook-static
 .tmp
 .eslintcache
+
+# e22
+/cypress/downloads
