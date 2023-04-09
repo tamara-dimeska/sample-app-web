@@ -28,5 +28,6 @@ storybook-static
 .tmp
 .eslintcache
 
-# e22
+# e2e
 /cypress/downloads
+/cypress/videos

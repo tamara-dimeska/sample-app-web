@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { ShoppingCart } from "../utils/shopping-cart";
-import { ROUTES } from "../utils/Constants";
-import "./CartButton.css";
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { ShoppingCart } from '../utils/shopping-cart';
+import { ROUTES } from '../utils/Constants';
+import './CartButton.css';
 
 const CartButton = (props) => {
   const { history } = props;
-  let cartBadge = "";
+  let cartBadge = '';
   const [cartContents, setCartContents] = useState(
-    ShoppingCart.getCartContents()
+    ShoppingCart.getCartContents(),
   );
   // Strangely enough this is being called, but not covered in the report
   /* istanbul ignore next */
