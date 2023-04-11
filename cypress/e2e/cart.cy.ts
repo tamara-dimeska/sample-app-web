@@ -1,28 +1,20 @@
-import { CORRECT_USER_CREDENTIALS } from '../consts';
+import { CORRECT_USER_CREDENTIALS, SELECTORS } from '../consts';
 
 describe('User on cart page', () => {
-  const itemToInteractWith = 'Sauce Labs Backpack';
-  const addToCartButton = 'add-to-cart-sauce-labs-backpack';
-  const shoppingCartIcon = 'shopping-cart-icon';
-  const removeButton = 'remove-sauce-labs-backpack';
-  const continueShoppingButton = 'continue-shopping';
-  const yourCartTitle = 'Your Cart';
-  const productsTitle = 'Products';
-
   beforeEach(() => {
     cy.login(CORRECT_USER_CREDENTIALS);
-    cy.getByDataTestId(addToCartButton).click();
-    cy.getByDataTestId(shoppingCartIcon).click();
+    cy.getByDataTestId(SELECTORS.addToCartButton).click();
+    cy.getByDataTestId(SELECTORS.shoppingCartIcon).click();
   });
 
   it('should be able to remove an item from cart', () => {
-    cy.getByDataTestId(removeButton).click();
-    cy.contains(itemToInteractWith).should('not.exist');
+    cy.getByDataTestId(SELECTORS.removeButton).click();
+    cy.contains(SELECTORS.itemToInteractWith).should('not.exist');
   });
 
   it('should be able to continue with shopping', () => {
-    cy.getByDataTestId(continueShoppingButton).click();
-    cy.contains(yourCartTitle).should('not.exist');
-    cy.contains(productsTitle).should('exist');
+    cy.getByDataTestId(SELECTORS.continueShoppingButton).click();
+    cy.contains(SELECTORS.yourCartTitle).should('not.exist');
+    cy.contains(SELECTORS.productsTitle).should('exist');
   });
 });
