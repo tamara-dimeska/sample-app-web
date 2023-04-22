@@ -8,7 +8,7 @@ I have forked the sample app from the saucelab repo and worked on top of it. I h
 
 Since the app is a bit old, at the beginning I had to do some cleanup, such as updating some packages that are being used. The repo already had some e2e tests in it, so I removed all of them and all packages related to it, so that I can start clean.
 
-I have also installed all the necessary packages for my new e2e tests, just as: cypress, typescript, eslint, prettier, etc. The project already had some linter rules, but for simplicity purposes and so that I can also add the rules I think suits me best, I have created new config files for eslint and prettier.
+I have also installed all the necessary packages for my new e2e tests, just as: cypress, typescript, eslint, prettier, etc. The project already had some linter rules, but for simplicity purposes and so that I can also add the rules I think suit me best, I have created new config files for eslint and prettier.
 
 I have also created scripts that help you with running the e2e tests and environment setup.
 
