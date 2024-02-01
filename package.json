@@ -27,12 +27,14 @@
     "@babel/preset-env": "^7.23.9",
     "@babel/register": "^7.23.7",
     "@backtrace-labs/javascript-cli": "^0.1.2",
+    "@playwright/test": "^1.41.1",
     "@storybook/addon-actions": "^7.6.11",
     "@storybook/addon-essentials": "^7.6.11",
     "@storybook/addon-links": "^7.6.11",
     "@storybook/node-logger": "^7.6.11",
     "@storybook/preset-create-react-app": "^7.6.11",
     "@storybook/react": "^7.6.11",
+    "@types/node": "^20.11.15",
     "chromedriver": "^121.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.7",
@@ -55,7 +57,10 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build.storybook": "build-storybook -s public",
     "postbuild.storybook": "cd scripts && ./postbuild.sh",
-    "backtrace.sourcemaps": "backtrace-js run"
+    "backtrace.sourcemaps": "backtrace-js run",
+    "playwright:test": "npx playwright test",
+    "playwright:test:ui": "npx playwright test --ui",
+    "playwright:show:report": "npx playwright show-report"
   },
   "browserslist": {
     "production": [
