@@ -117,7 +117,7 @@ const InventoryItem = (props) => {
     const label = itemInCart ? "Remove" : "Add to cart";
     const onClick = itemInCart ? () => removeFromCart(id) : () => addToCart(id);
     const type = itemInCart ? BUTTON_TYPES.SECONDARY : BUTTON_TYPES.PRIMARY;
-    const testId = label === "Remove" ? "remove" : "add-to-cart";
+    const testId = `${label}-${item}`.replace(/\s+/g, "-").toLowerCase();
 
     return (
       <Button
