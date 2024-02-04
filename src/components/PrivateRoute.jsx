@@ -32,7 +32,7 @@ PrivateRoute.propTypes = {
   /**
    * A react component
    */
-  component: PropTypes.element,
+  component: PropTypes.elementType,
 };
 /* istanbul ignore next */
 PrivateRoute.defaultProps = {

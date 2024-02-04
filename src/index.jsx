@@ -1,12 +1,10 @@
-// Needed to add the below due to issues in IE11, see this thread
-// https://github.com/facebook/create-react-app/issues/9906#issuecomment-720905753
 /** @jsxRuntime classic */
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
 
 import { BacktraceClient, ErrorBoundary } from "@backtrace-labs/react";
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client"; // Import createRoot
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import "./index.css";
@@ -32,6 +30,9 @@ BacktraceClient.initialize({
   }),
 });
 
+// Use createRoot instead of ReactDOM.render
+const root = document.getElementById("root");
+const rootContainer = createRoot(root);
 const routing = (
   <ErrorBoundary>
     <Router>
@@ -52,9 +53,6 @@ const routing = (
   </ErrorBoundary>
 );
 
-ReactDOM.render(routing, document.getElementById("root"));
+rootContainer.render(routing); // Use rootContainer instead of ReactDOM.render
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register();
