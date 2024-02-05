@@ -8,7 +8,6 @@ import {
 
 test.beforeEach(async ({ page, baseURL }) => {
   await page.goto(baseURL!);
-  await page.waitForURL(baseURL!);
 });
 
 test.describe('User on login page', () => {
