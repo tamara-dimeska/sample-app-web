@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 
-export class ItemOverviewPage {
+export class ItemPage {
   readonly page: Page;
   readonly backButton: Locator;
 

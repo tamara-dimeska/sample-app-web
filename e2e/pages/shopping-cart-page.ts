@@ -12,4 +12,16 @@ export class ShoppingCartPage {
   getItem(itemLabel: string): Locator {
     return this.page.getByText(itemLabel);
   }
+
+  async removeBackpackFromCart() {
+    await this.page.getByTestId('remove-sauce-labs-backpack').click();
+  }
+
+  async clickContinueShoppingButton() {
+    await this.page.getByTestId('continue-shopping').click();
+  }
+
+  async openCheckout() {
+    await this.page.getByTestId('checkout').click();
+  }
 }
