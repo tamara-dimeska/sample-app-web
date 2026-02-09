@@ -160,6 +160,7 @@ const InventoryItem = (props) => {
                 <img
                   alt={item.name}
                   className="inventory_details_img"
+                  // eslint-disable-next-line @typescript-eslint/no-var-requires
                   src={require(`../assets/img/${item.image_url}`).default}
                   data-test={`item-${item.name
                     .replace(/\s+/g, "-")

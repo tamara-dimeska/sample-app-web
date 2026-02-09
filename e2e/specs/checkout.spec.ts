@@ -1,32 +1,23 @@
-import test, { expect } from '@playwright/test';
-import { LoginPage } from '../pages/login-page';
-import { CORRECT_USER_CREDENTIALS } from '../consts/users';
 import { HomePage } from '../pages/home-page';
 import { CartNavBar } from '../pages/cart-nav-bar';
 import { ShoppingCartPage } from '../pages/shopping-cart-page';
 import { CheckoutPage } from '../pages/checkout-page';
+import { openedShoppingCardTest as test, expect } from '../fixtures';
 
-test.beforeEach(async ({ page, baseURL }) => {
-  const loginPage = new LoginPage(page);
-  const homePage = new HomePage(page);
-  const cartNavBar = new CartNavBar(page);
-  const shoppingCartPage = new ShoppingCartPage(page);
+test.beforeEach(async ({ openedShoppingCardPage }) => {
+  const shoppingCartPage = new ShoppingCartPage(openedShoppingCardPage);
 
-  await page.goto(baseURL!);
-  await loginPage.login(CORRECT_USER_CREDENTIALS);
-  await homePage.addBackpackToCart();
-  await cartNavBar.openShoppingCart();
   await shoppingCartPage.openCheckout();
 });
 
 test.describe('User on checkout page', () => {
   test('should be able to checkout when the form is filled', async ({
-    page,
+    openedShoppingCardPage,
   }) => {
-    const checkoutPage = new CheckoutPage(page);
-    const cartNavBar = new CartNavBar(page);
-    const shoppingCartPage = new ShoppingCartPage(page);
-    const homePage = new HomePage(page);
+    const checkoutPage = new CheckoutPage(openedShoppingCardPage);
+    const cartNavBar = new CartNavBar(openedShoppingCardPage);
+    const shoppingCartPage = new ShoppingCartPage(openedShoppingCardPage);
+    const homePage = new HomePage(openedShoppingCardPage);
 
     await checkoutPage.fillInForm('Test Name', 'Test Last Name', '12345');
     await checkoutPage.clickContinueButton();
@@ -45,9 +36,9 @@ test.describe('User on checkout page', () => {
   });
 
   test('should not be able to checkout when the form is not fully filled', async ({
-    page,
+    openedShoppingCardPage,
   }) => {
-    const checkoutPage = new CheckoutPage(page);
+    const checkoutPage = new CheckoutPage(openedShoppingCardPage);
 
     await checkoutPage.fillInLastName('Test Last Name');
     await checkoutPage.fillInPostCode('12345');
@@ -57,9 +48,11 @@ test.describe('User on checkout page', () => {
     );
   });
 
-  test('should be able to cancel the checkout flow', async ({ page }) => {
-    const checkoutPage = new CheckoutPage(page);
-    const shoppingCartPage = new ShoppingCartPage(page);
+  test('should be able to cancel the checkout flow', async ({
+    openedShoppingCardPage,
+  }) => {
+    const checkoutPage = new CheckoutPage(openedShoppingCardPage);
+    const shoppingCartPage = new ShoppingCartPage(openedShoppingCardPage);
 
     await checkoutPage.clickCancelButton();
     await expect(shoppingCartPage.title).toBeVisible();
